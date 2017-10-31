@@ -17,7 +17,9 @@ const styles = StyleSheet.create({
   },
   input: {
     borderColor: 'black',
-    borderWidth: 2
+    borderWidth: 2,
+    margin: 10,
+    padding: 5
   },
   label: {
     fontSize: 12,

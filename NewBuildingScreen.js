@@ -20,11 +20,11 @@ export default class NewBuildingScreen extends React.Component {
   }
 
   handleRentsChange = rents => {
-    const capitalisationInt = (parseInt(rents) * 12 / this.state.price * 100).toFixed(3)
-    const valueInt = (parseInt(rents) * 12 / (capitalisationInt / 100 ) ).toFixed(2)
+    const capitalisationInt = (parseInt(rents) / this.state.price * 100).toFixed(3)
+    const valueInt = (parseInt(rents) / (capitalisationInt / 100 ) ).toFixed(2)
 
-    const capitalisation = String(capitalisationInt) + '%'
-    const value = String(valueInt) + '€'
+    const capitalisation = String(capitalisationInt)
+    const value = String(valueInt)
     this.setState({rents, capitalisation, value})
   }
   render(){
@@ -32,40 +32,41 @@ export default class NewBuildingScreen extends React.Component {
       <View>
         <Text style={styles.h1}>New Building Informations</Text>
 
-        <Label text='Building Name:'/>
         <TextInput
+          placeholder='Building ID'
           style={styles.input}
           value={this.state.buildingName}
           onChangeText={buildingName => this.setState({buildingName})} />
 
-        <Label text='Price:' />
         <TextInput
+          placeholder='Price in € '
           keyboardType='numeric'
           style={styles.input}
           value={this.state.price}
           onChangeText={price => this.setState({price})} />
 
-        <Label text='Flats Informations:' />
         <TextInput
+          placeholder='What flats are there?'
           style={styles.input}
           value={this.state.flats}
           onChangeText={flats => this.setState({flats})} />
 
-        <Label text='Monthly Rents:' />
         <TextInput
+          placeholder='Annual rents in €'
           style={styles.input}
           keyboardType='numeric'
           value={this.state.rents}
           onChangeText={this.handleRentsChange} />
 
-        <Label text='URL:' />
         <TextInput
+          placeholder='A url'
           style={styles.input}
           value={this.state.url}
           onChangeText={url => this.setState({url})} />
 
         <Label text='Capitalisation Rate (%):' />
         <TextInput
+          placeholder='Capitalisation rate in %'
           style={styles.input}
           value={this.state.capitalisation}/>
 
